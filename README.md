@@ -11,4 +11,4 @@ Google Cloud Text to Speech V1 v2.5.0
 
 2. Set the CredentialPath and OutputPath of the TTSTest component in the Inspector view.  
 
-![image](https://user-images.githubusercontent.com/46705432/163673784-b036861a-1a16-4c44-87a1-df927a155b33.png)
+![image](https://user-images.githubusercontent.com/46705432/163673993-12a57835-1a1f-4726-bb78-96ec7380c544.png)
