@@ -38,7 +38,7 @@ public class TTSTest : MonoBehaviour
         };
 
         // 音声合成実行
-        var response = client.SynthesizeSpeech(new SynthesizeSpeechRequest
+        SynthesizeSpeechResponse response = client.SynthesizeSpeech(new SynthesizeSpeechRequest
         {
             Input = input,
             Voice = voice,
