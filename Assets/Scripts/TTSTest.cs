@@ -39,14 +39,14 @@ public class TTSTest : MonoBehaviour
         // 読み上げる内容
         SynthesisInput input = new SynthesisInput
         {
-            Text = "こんにちはー！どうもどうも"
+            Text = "おはようございます"
         };
 
         // ボイス設定
         VoiceSelectionParams voice = new VoiceSelectionParams
         {
             LanguageCode = "ja-JP",
-            SsmlGender = SsmlVoiceGender.Male
+            SsmlGender = SsmlVoiceGender.Female
         };
 
         // 音声ファイル設定
