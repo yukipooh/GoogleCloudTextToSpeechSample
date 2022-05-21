@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "dtalk-290006",
+  "private_key_id": "5cd7e6c242d45eeecc1ece020f32c486a8bda56f",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCgiOjHiCCLZA0y\nMb+1bWtH1xZwZa9msRvzVdjbjtR4IWtZ7l9yifqXlPbAuczXpSj+TDA/I5CDgoGD\n276v9XBEroT/sSV4oH9D8U+ePYwtQpwpVa9tzbhYdWkKWWYhBmXtsFGwQkQ8Z404\nHDi05vN2uRBfiNEQTDaAnjdpxkIjGh58wBgX3/1friROx249KD5GvvfS3F4xEg14\nKgXscCX1cQqWHj0RLWWgXDw5caDGr+m/o9IyrctjyKD2X3xfTh7uPKNzACD1Xg4J\nITTgucJYuqdTtekX+F8WE3po7P2kvahwZxkoBlLpu0tr9TpL4VbLH074mQj075+E\n83BLVQq5AgMBAAECggEAS21YdhvbMrMtUha23R9Op0ADrobQfX8cw13kGPEImnMV\nVflexlnXMK6Qq6gA+5eB5c3VY20p4uiIQvSWKWW4PMUE/4BzuzQp57nzb0W63a8s\n4Wz9kql0greTxYWQq1auwJm2IAtatUjwPNtht3nGDdPRQhnuJOqyNwdfwOaiv4uw\ndgoPOKqdW/OGET/m97zqhvfkNmVuR8OpbnDmCzhfvlsh39vg9wi3rqFCkgW0gAKK\nzOcRvnl08+wuvYcMqgFzcY2+VB/eb1I9pM0+Zpuqe2csJA5+0JCz4G4bhlyhmshI\nBpXSOcESSMm/W+t3fKXIUMR+wPtTeBNVxZpnTJAikwKBgQDclGtDrsj8yJrWQDI3\nt3sJ2Ll0//UcEAa7bI+zHF/Ph9+b59lPXMOP6nO1q2aH+BfYRqUf+wsVRTcEY/KJ\nHR/A1vHOpNw2s1pWStpbfAb45yfdI3d/dWbhfPc/NyQpmcSY9ioDLmXuHY1O47CH\nd6yEtR4Drq9WLn8hpMNVn3DgOwKBgQC6UCpRzepvujB5Mc3dbmc/Mm30Z0TILpI0\nZuSZK7PQibPmKl2uD1F1C02W70c61D86wCyA5Vcz5Phjdp0iicPwofJlJzY2ivyW\nyqCxnQxVSKw82np40tzPJn0/m/uIrgW6XfG0/Jih8BLmLwOHM6dhN/SnJaoYPZ0s\nzhmXajJlmwKBgBMEMKMrJGS2nrKt4iZviQn2RzbRAj6jGxF5cIIOhiwMGLkGKfPv\nmWSE3+jfl/1M5DFfFclGCVSSHQYh37z2Z9BmN36LM/j7SWR7G4wbizZWJ1enQRwZ\n8P6rmV030cRMX2iYgFK540u9/Hq6onNrW9ItEyNaIf+aDpfF7pkpH8AVAoGBAJ5Z\nxi4y+l8te0d2egcKb7w5y1RfdQlC88aP8RjyGOlUME+ekHKA2HXHPpHbGso4XOk9\nLlX7Fmun3ykCRjl1p9BchF1Ov3gKFva+j2eGGFZf5uvtsQwCA+QYTXmDxHx9k6a7\nc9Skn8F6/0UejjwaPdeWLFzn2TKzI2RSY1Pa0ayjAoGAOukmCHd4SCssWNSgEICl\nZFV6RI/eiug6VjtdyBBKWTNDIR312AM6DHKiOMBebcJi0j/m9MVXNV+4jHH+kmf0\nUA9rUqBuJ288pl8lQLi19vjqMW/6tYt8VcFts6cC1p5YZmurb3EIj607uLBwSlTP\nMALEakFrE6f0LNlfQLuMWYc=\n-----END PRIVATE KEY-----\n",
+  "client_email": "diagnosissystem@dtalk-290006.iam.gserviceaccount.com",
+  "client_id": "100368128888495943461",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/diagnosissystem%40dtalk-290006.iam.gserviceaccount.com"
+}
