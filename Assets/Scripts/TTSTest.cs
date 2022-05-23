@@ -17,6 +17,7 @@ public class TTSTest : MonoBehaviour
     /// </summary>
     [SerializeField] private string outputPath;
     [SerializeField] private AudioSource audioSource;
+    public static string inputText;
     private AudioClip audioClip;
     
     /// <summary>
