@@ -60,3 +60,6 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+Assets/dic/ipadic/matrix.bin
+Assets/dic/ipadic/sys.dic
+Assets/dic/ipadic/unk.dic
