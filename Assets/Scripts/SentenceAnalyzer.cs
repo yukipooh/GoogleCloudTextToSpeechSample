@@ -16,7 +16,6 @@ public class SentenceAnalyzer : IDisposable
         meCabIpaDicTagger = MeCabIpaDicTagger.Create(dicDir);
     }
 
-    
     public MeCabIpaDicNode[] Analyze(string sentence)
     {
         if(string.IsNullOrEmpty(sentence)) throw new ArgumentException();
