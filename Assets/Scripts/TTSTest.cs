@@ -150,7 +150,7 @@ public class TTSTest : MonoBehaviour
             }else{
 
             }
-            isDecidedAnswer = true;
+            // isDecidedAnswer = true;
         }
 
         if(!isDecidedAnswer) answerSentence = "すいません。よくわかりません。";
