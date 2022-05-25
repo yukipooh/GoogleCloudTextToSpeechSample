@@ -2,8 +2,9 @@ using System.IO;
 using Google.Cloud.TextToSpeech.V1;
 using UnityEngine;
 using System.Collections;
-using System.Threading.Tasks;
+using System.Collections.Generic;
 using UnityEditor;
+using System.Linq;
 
 public class TTSTest : MonoBehaviour
 {
@@ -17,6 +18,11 @@ public class TTSTest : MonoBehaviour
     /// </summary>
     [SerializeField] private string outputPath;
     [SerializeField] private AudioSource audioSource;
+    [SerializeField] UserInputManager userInputManager;
+
+    /// <summary>
+    /// Userが入力した文章
+    /// </summary>
     public static string inputText;
     private AudioClip audioClip;
     
@@ -24,30 +30,39 @@ public class TTSTest : MonoBehaviour
     /// 合成した音声のファイル名
     /// </summary>
     private string outputAudioName = "outputAudio";
+    private TextToSpeechClient client;
 
     private async void Start()
     {
         var credential = Resources.Load<TextAsset>(credentialPath).text;
-        Debug.Log(credential);
-
+        
         TextToSpeechClientBuilder builder = new TextToSpeechClientBuilder()
         {
             JsonCredentials = credential
         };
 
-        TextToSpeechClient client = builder.Build();
-        
+        client = builder.Build();
+
+    }
+    
+    /// <summary>
+    /// 喋る内容と性別に応じて音声合成を行い結果を返す
+    /// </summary>
+    /// <param name="sentence">喋る内容</param>
+    /// <param name="gender">性別</param>
+    /// <returns></returns>
+    private SynthesizeSpeechResponse GetSynthesizeSpeechResponse(string sentence, SsmlVoiceGender gender = SsmlVoiceGender.Female){
         // 読み上げる内容
         SynthesisInput input = new SynthesisInput
         {
-            Text = "おはようございます"
+            Text = sentence
         };
 
         // ボイス設定
         VoiceSelectionParams voice = new VoiceSelectionParams
         {
             LanguageCode = "ja-JP",
-            SsmlGender = SsmlVoiceGender.Female
+            SsmlGender = gender
         };
 
         // 音声ファイル設定
@@ -57,14 +72,14 @@ public class TTSTest : MonoBehaviour
         };
 
         // 音声合成実行
-        SynthesizeSpeechResponse response = client.SynthesizeSpeech(new SynthesizeSpeechRequest
+        SynthesizeSpeechResponse res = client.SynthesizeSpeech(new SynthesizeSpeechRequest
         {
             Input = input,
             Voice = voice,
             AudioConfig = config
         });
-        
-        StartCoroutine(PlayAudio(response));
+
+        return res;
     }
 
     /// <summary>
@@ -96,12 +111,50 @@ public class TTSTest : MonoBehaviour
     /// <param name="response">音声合成のレスポンス</param>
     /// <param name="isDeleteFile">合成した音声ファイルを再生後削除するかどうか</param>
     /// <returns></returns>
-    private IEnumerator PlayAudio(SynthesizeSpeechResponse response, bool isDeleteFile = true){
+    public IEnumerator PlayAudio(bool isDeleteFile = true){
+        SynthesizeSpeechResponse response = GetSynthesizeSpeechResponse(GetSpeechSentence(), SsmlVoiceGender.Female);
         yield return CreateAudio(outputAudioName, response);
         audioSource.clip = audioClip;
         audioSource.Play();
         if(isDeleteFile){
             File.Delete(outputPath + "/" + outputAudioName + ".mp3");
         }
+    }
+
+    /// <summary>
+    /// 喋る内容を決定し返す
+    /// </summary>
+    /// <returns>喋る内容</returns>
+    public string GetSpeechSentence(){
+        SentenceAnalyzer sentenceAnalyzer = new SentenceAnalyzer();
+        string answerSentence = "";
+        bool isDecidedAnswer = false;   //答えを決定できたかどうか
+        var nodes = sentenceAnalyzer.Analyze(inputText);
+        List<string> result = nodes.Select(x => x.Surface).ToArray().ToList();
+        foreach(string item in result){
+            Debug.Log(item);
+        }
+        foreach(string greeting in ConstData.greetings){
+            if(result.Contains(greeting)){
+                answerSentence = greeting + "。わざわざありがとうございます！";
+                isDecidedAnswer = true;
+            }
+        }
+        if(result.Contains("天気")){
+            if(result.Contains("今日")){
+                //ToDo　天気予報APIを用いて天気予報を伝える。
+            }else if(result.Contains("明日")){
+
+            }else if(result.Contains("明後日")){
+
+            }else{
+
+            }
+            isDecidedAnswer = true;
+        }
+
+        if(!isDecidedAnswer) answerSentence = "すいません。よくわかりません。";
+        userInputManager.SetResponseText(answerSentence);
+        return answerSentence;
     }
 }

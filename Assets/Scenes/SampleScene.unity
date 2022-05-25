@@ -548,6 +548,7 @@ MonoBehaviour:
   enterButton: {fileID: 212466673}
   inputField: {fileID: 1469356842}
   responseText: {fileID: 2127823739}
+  ttsTest: {fileID: 1330083918}
 --- !u!4 &718758025
 Transform:
   m_ObjectHideFlags: 0
@@ -755,6 +756,7 @@ MonoBehaviour:
   credentialPath: settings
   outputPath: Assets/Resources
   audioSource: {fileID: 1696304912}
+  userInputManager: {fileID: 718758024}
 --- !u!4 &1330083919
 Transform:
   m_ObjectHideFlags: 0
