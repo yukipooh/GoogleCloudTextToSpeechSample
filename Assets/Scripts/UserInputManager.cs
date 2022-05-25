@@ -8,17 +8,21 @@ public class UserInputManager : MonoBehaviour
     [SerializeField] private Button enterButton;
     [SerializeField] private InputField inputField;
     [SerializeField] private Text responseText;
+    [SerializeField] TTSTest ttsTest;
 
     // Start is called before the first frame update
     void Start()
     {
         //TODO: inputTextを渡してレスポンスを音声合成する関数をセット
-        enterButton.onClick.AddListener(() => {TTSTest.inputText = inputField.text;});
+        enterButton.onClick.AddListener(OnClickEnter);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    void OnClickEnter(){
+        TTSTest.inputText = inputField.text;
+        StartCoroutine(ttsTest.PlayAudio(false));
+    }
+
+    public void SetResponseText(string response){
+        responseText.text = "Response : " + response;
     }
 }
