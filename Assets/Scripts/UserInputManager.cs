@@ -19,7 +19,7 @@ public class UserInputManager : MonoBehaviour
 
     void OnClickEnter(){
         TTSTest.inputText = inputField.text;
-        StartCoroutine(ttsTest.PlayAudio(false));
+        StartCoroutine(ttsTest.PlayAudio(true));
     }
 
     public void SetResponseText(string response){
