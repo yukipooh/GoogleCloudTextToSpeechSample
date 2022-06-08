@@ -2,18 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ConstData : MonoBehaviour
+public static class ConstData
 {
-    public static List<string> greetings = new List<string>(){
-        "おはよう",
-        "こんにちは",
-        "こんばんは",
-        "こんばんわ",
-        "おはよ",
-        };
+    public static List<(string,string)> Dialogues = new List<(string,string)>(){
+        ("おはよう","おはよう"),
+        ("こんにちは","こんにちは"),
+        ("こんばんは","こんばんは"),
+        ("こんばんわ","こんばんわ"),
+        ("おはよ","おはよ"),
+    };
     
-
-    private void Start() {
-        
-    }
 }

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using System.Linq;
 
-public class TTSTest : MonoBehaviour
+public class VoiceOutput : OutputBase
 {
     /// <summary>
     /// APIキー？の保管場所
@@ -17,7 +17,7 @@ public class TTSTest : MonoBehaviour
     /// 合成した音声の保存先（フォルダ）
     /// </summary>
     [SerializeField] private string outputPath;
-    [SerializeField] private AudioSource audioSource;
+    [SerializeField] AudioSource audioSource;
     [SerializeField] UserInputManager userInputManager;
 
     /// <summary>
@@ -43,6 +43,10 @@ public class TTSTest : MonoBehaviour
 
         client = builder.Build();
 
+    }
+
+    public override void Execute(string text){
+        StartCoroutine(PlayAudio(true, text));
     }
     
     /// <summary>
@@ -111,50 +115,13 @@ public class TTSTest : MonoBehaviour
     /// <param name="response">音声合成のレスポンス</param>
     /// <param name="isDeleteFile">合成した音声ファイルを再生後削除するかどうか</param>
     /// <returns></returns>
-    public IEnumerator PlayAudio(bool isDeleteFile = true){
-        SynthesizeSpeechResponse response = GetSynthesizeSpeechResponse(GetSpeechSentence(), SsmlVoiceGender.Female);
+    public IEnumerator PlayAudio(bool isDeleteFile = true, string text = "テスト"){
+        SynthesizeSpeechResponse response = GetSynthesizeSpeechResponse(text, SsmlVoiceGender.Female);
         yield return CreateAudio(outputAudioName, response);
         audioSource.clip = audioClip;
         audioSource.Play();
         if(isDeleteFile){
             File.Delete(outputPath + "/" + outputAudioName + ".mp3");
         }
-    }
-
-    /// <summary>
-    /// 喋る内容を決定し返す
-    /// </summary>
-    /// <returns>喋る内容</returns>
-    public string GetSpeechSentence(){
-        SentenceAnalyzer sentenceAnalyzer = new SentenceAnalyzer();
-        string answerSentence = "";
-        // bool isDecidedAnswer = false;   //答えを決定できたかどうか
-        // var nodes = sentenceAnalyzer.Analyze(inputText);
-        // List<string> result = nodes.Select(x => x.Surface).ToArray().ToList();
-        // foreach(string item in result){
-        //     Debug.Log(item);
-        // }
-        // foreach(string greeting in ConstData.Dialogues){
-        //     if(result.Contains(greeting)){
-        //         answerSentence = greeting + "。わざわざありがとうございます！";
-        //         isDecidedAnswer = true;
-        //     }
-        // }
-        // if(result.Contains("天気")){
-        //     if(result.Contains("今日")){
-        //         //ToDo　天気予報APIを用いて天気予報を伝える。
-        //     }else if(result.Contains("明日")){
-
-        //     }else if(result.Contains("明後日")){
-
-        //     }else{
-
-        //     }
-        //     // isDecidedAnswer = true;
-        // }
-
-        // if(!isDecidedAnswer) answerSentence = "すいません。よくわかりません。";
-        // userInputManager.SetResponseText(answerSentence);
-        return answerSentence;
     }
 }
