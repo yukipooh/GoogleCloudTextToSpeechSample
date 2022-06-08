@@ -8,4 +8,5 @@ public abstract class ResponseGenerator
 {
     public abstract bool IsAvailable(string input);
     public abstract string Generate(string input);
+    public abstract string Generate(string input, WeatherAPIJson weatherAPIJson);
 }
