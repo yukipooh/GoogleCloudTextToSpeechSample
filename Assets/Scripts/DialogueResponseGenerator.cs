@@ -17,4 +17,8 @@ public class DialogueResponseGenerator : ResponseGenerator
         (string,string)? target = ConstData.Dialogues.Select(x => ((string,string)?)x).FirstOrDefault(x => x.Value.Item1 == input);
         return target != null ? target.Value.Item2:ErrorMessage;
     }
+
+    public override string Generate(string input, WeatherAPIJson weatherAPIJson){
+        return "test";
+    }
 }
